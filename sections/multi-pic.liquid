@@ -1,0 +1,141 @@
+  <style>
+  .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .grid-item {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .grid-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .grid-item .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  </style>
+
+<div class="grid-container">
+    <div class="grid-item">
+        {%- if section.settings.multi_img_id1 -%}
+            <img src="{{ section.settings.multi_img_id1 | img_url: 'medium' }}" alt="Photo">
+            {%- else -%}
+                <img src="{{ 'pretty.avif' | asset_url }}" alt="Photo">
+        {%- endif -%}      
+      <div class="caption">
+        {%- if section.settings.multi_text_id_one != blank -%}
+            {{ section.settings.multi_text_id_one }}
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="grid-item">
+      {%- if section.settings.multi_img_id2 -%}
+            <img src="{{ section.settings.multi_img_id2 | img_url: 'medium' }}" alt="Photo">
+            {%- else -%}
+                <img src="{{ 'pretty.avif' | asset_url }}" alt="Photo">
+        {%- endif -%}
+      <div class="caption">
+        {%- if section.settings.multi_text_id_two != blank -%}
+            {{ section.settings.multi_text_id_two }}
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="grid-item">
+      {%- if section.settings.multi_img_id3 -%}
+            <img src="{{ section.settings.multi_img_id3 | img_url: 'medium' }}" alt="Photo">
+            {%- else -%}
+                <img src="{{ 'pretty.avif' | asset_url }}" alt="Photo">
+        {%- endif -%}
+      <div class="caption">
+        {%- if section.settings.multi_text_id_three != blank -%}
+            {{ section.settings.multi_text_id_three }}
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="grid-item">
+       {%- if section.settings.multi_img_id4 -%}
+            <img src="{{ section.settings.multi_img_id4 | img_url: 'medium' }}" alt="Photo">
+            {%- else -%}
+                <img src="{{ 'pretty.avif' | asset_url }}" alt="Photo">
+        {%- endif -%}   
+      <div class="caption">
+        {%- if section.settings.multi_text_id_four != blank -%}
+            {{ section.settings.multi_text_id_four }}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+
+{% schema %}
+    {
+        "name": "Multi pic",
+        "settings": [
+            {
+                "type": "text",
+                "id": "multi_text_id_one",
+                "default": "Default text 1",
+                "label": "Enter text1"
+            },
+            {
+                "type": "text",
+                "id": "multi_text_id_two",
+                "default": "Default text 2",
+                "label": "Enter text2"
+            },
+            {
+                "type": "text",
+                "id": "multi_text_id_three",
+                "default": "Default text 3",
+                "label": "Enter text3"
+            },
+            {
+                "type": "text",
+                "id": "multi_text_id_four",
+                "default": "Default text 4",
+                "label": "Enter text4"
+            }, 
+            {
+                "type": "image_picker",
+                "id": "multi_img_id1",
+                "label": "Pick img 1"
+            },
+            {
+                "type": "image_picker",
+                "id": "multi_img_id2",
+                "label": "Pick img 2"
+            },
+            {
+                "type": "image_picker",
+                "id": "multi_img_id3",
+                "label": "Pick img 3"
+            },
+            {
+                "type": "image_picker",
+                "id": "multi_img_id4",
+                "label": "Pick img 4"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Multi pic"
+            }
+        ]
+    }
+{% endschema %}
